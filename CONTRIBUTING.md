@@ -41,14 +41,30 @@ pytest tests/
 
 ## Project Structure
 
-Armada is a monorepo with several services:
+Armada is a monorepo organized as follows:
 
-- `services/orchestrator` — FastAPI job orchestrator
-- `services/agent` — Celery worker agents
-- `services/frontend` — React/TypeScript dashboard
-- `services/proxy-provider` — Proxy management
-- `services/fingerprint-provider` — Anti-detection engine
-- `lib/fantomas` — Browser automation library
+### Services (`services/`)
+
+- `services/orchestrator` — FastAPI orchestration API (merges configs, pushes to Redis, deploys K8s Jobs, dispatches via RabbitMQ)
+- `services/agent` — Celery worker that loads its config from Redis and executes user-provided Python code
+- `services/backend` — FastAPI monitoring backend with REST endpoints for runs, jobs, and events, plus WebSocket broadcasting
+- `services/frontend` — React/TypeScript dashboard (Launch and Monitor panels)
+- `services/proxy-provider` — FastAPI service for selecting, rotating and verifying proxies from SQL Server
+- `services/fingerprint-provider` — FastAPI service for fetching and forging browser fingerprints (Arkose)
+- `services/project` — Project template copied by `create-project.sh` when scaffolding a new project
+
+### Libraries (`lib/`)
+
+- `lib/fantomas` — In-house browser automation library built on nodriver (WindMouse cursor paths, xdotool mode, virtual screen)
+
+### Infrastructure & Tooling
+
+- `bootstrap/` — Python scripts to create SQL Server tables, Kubernetes secrets, and deploy via Helm
+- `deploy/` — Helm chart with templates for all services (Redis, RabbitMQ, backend, orchestrator, etc.)
+- `local/` — Docker Compose setup for local development (7 services including Redis and RabbitMQ)
+- `first-try/` — Self-contained demo (Flask-based "Twittor" website + pre-configured project)
+- `tools/` — Bulk data import scripts for SQL Server tables
+- `tests/` — End-to-end test suites for each service and integration (database, fantomas, proxy, etc.)
 
 ## Guidelines
 

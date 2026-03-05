@@ -20,7 +20,7 @@
 
 <div align="center">
 <a href="#diagram-deploy"><img src="assets/deployment-flow.svg" alt="Kubernetes Deployment Flow" width="900"/></a>
-</figure>
+</div>
 </div>
 
 
@@ -38,7 +38,7 @@ https://github.com/user-attachments/assets/ca76f5cc-3931-4e15-8875-41638bc72674
 
 ## First Try — reproduce the demo above on a Minikube Cluster
 
-*For a proper Quick-start on a real K8s cluser, see [Quick Start - Installation Guide](https://armada.services/docs/getting-started/quickstart-kubernetes/).*
+*For a proper Quick-start on a real K8s cluster, see [Quick Start - Installation Guide](https://armada.services/docs/getting-started/quickstart-kubernetes/).*
 
 **Requirements** : Linux, Python, Azure SQL Database instance, Docker, Kubernetes on Minikube (local) with Kubectl and Helm
 
@@ -103,7 +103,7 @@ Drag and drop your first-try-project folder and click Launch
 
 Switch to **Monitor** tab to watch your run in real time
 
-*Note : without any pre-existing cache (for example, on the very first run of Aramada), there will be a cold start caused by the cluster spin-up, as it provisions heavy resources (such as browser), so it is normal to see `Ǹo Jobs` for a while in Jobs Monitoring Tab*
+*Note : without any pre-existing cache (for example, on the very first run of Armada), there will be a cold start caused by the cluster spin-up, as it provisions heavy resources (such as browser), so it is normal to see `Ǹo Jobs` for a while in Jobs Monitoring Tab*
 
 ##  Under the Hood
 
@@ -148,7 +148,7 @@ Scaling from one to hundreds of workers requires zero changes to your code. The 
 
 - Human emulation out of the box. Every click follows a physics-based curved trajectory (WindMouse), and every keystroke is typed with randomized delays — no teleporting cursors or instant text injection.
 - Two interaction strategies. Native mode operates through Chrome's CDP protocol with emulation layers on top. XDO mode goes deeper, firing events at the OS level via xdotool, making them virtually indistinguishable from real user input.
-- Seamless Armada integration. Fantomas is designed around Armada's two-tier lifecycle: a browser instance is launched once at the agent level and reused across all jobs, avoiding the cost of spinning up Chrome for every single task. Move it to the job context instead if you needm full isolation between tasks.
+- Seamless Armada integration. Fantomas is designed around Armada's two-tier lifecycle: a browser instance is launched once at the agent level and reused across all jobs, avoiding the cost of spinning up Chrome for every single task. Move it to the job context instead if you need full isolation between tasks.
 - Full nodriver compatibility. Every native nodriver method (get, query_selector, tabs, ...)
 remains directly available — Fantomas extends the API without replacing it. *See [Fantomas Documentation](https://armada.services/docs/fantomas/) and [API Reference](https://armada.services/docs/fantomas/fantomas-reference/).*
 
